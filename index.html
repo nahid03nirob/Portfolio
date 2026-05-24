@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nahid Ahmed Nirob | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: 'DM Sans', sans-serif; }
+  .avatar-ring {
+    position:absolute; inset:-8px; border-radius:50%;
+    border:3px solid transparent;
+    background:conic-gradient(#e63c3c,#4f8ef7,#a855f7,#e63c3c) border-box;
+    -webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
+    -webkit-mask-composite:destination-out; mask-composite:exclude;
+    animation:spin 4s linear infinite;
+  }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
+  @keyframes slideInLeft  { from{opacity:0;transform:translateX(-50px)} to{opacity:1;transform:none} }
+  @keyframes slideInRight { from{opacity:0;transform:translateX(50px)}  to{opacity:1;transform:none} }
+  @keyframes popIn  { from{opacity:0;transform:scale(.6)} to{opacity:1;transform:none} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:none} }
+
+  .slide-left  { animation:slideInLeft  .6s both; }
+  .slide-right { animation:slideInRight .6s both; }
+  .pop-in  { animation:popIn  .8s cubic-bezier(.34,1.56,.64,1) both .2s; }
+  .fade-up { animation:fadeUp .7s both; }
+  .status-dot { animation:pulse 1.5s infinite; }
+
+  .btn-card::before {
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.25) 50%,transparent 70%);
+    transform:translateX(-100%); transition:transform .5s ease;
+    border-radius:inherit;
+  }
+  .btn-card:hover::before { transform:translateX(100%); }
+
+  .popup-wrap { opacity:0; pointer-events:none; transition:opacity .3s ease; }
+  .popup-wrap.open { opacity:1; pointer-events:all; }
+  .popup-inner { transform:translateY(32px) scale(.95); transition:transform .4s cubic-bezier(.34,1.56,.64,1); }
+  .popup-wrap.open .popup-inner { transform:none; }
+</style>
+</head>
+<body class="min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
+      style="background-image: url('image/background1.jpg');">
+
+  <div class="min-h-screen bg-gradient-to-br from-black/85 via-black/70 to-[#0a0a1e]/80
+              flex items-center justify-center px-4 py-16">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-center w-full max-w-5xl">
+
+      <!-- LEFT BUTTONS -->
+      <div class="flex flex-col gap-4 items-center md:items-start">
+
+        <button onclick="openPopup('fbPopup')"
+          class="btn-card slide-left relative overflow-hidden w-44 h-12 rounded-2xl font-semibold text-white
+                 bg-white/10 border border-[#3b5998]/60 backdrop-blur-md
+                 flex items-center justify-center
+                 hover:bg-[#3b5998] hover:scale-105 hover:-translate-y-1 hover:shadow-xl
+                 transition-all duration-300 cursor-pointer"
+          style="animation-delay:.1s">
+          Facebook
+        </button>
+
+        <button onclick="openPopup('igPopup')"
+          class="btn-card slide-left relative overflow-hidden w-44 h-12 rounded-2xl font-semibold text-white
+                 bg-white/10 border border-[#e1306c]/60 backdrop-blur-md
+                 flex items-center justify-center
+                 hover:bg-[#e1306c] hover:scale-105 hover:-translate-y-1 hover:shadow-xl
+                 transition-all duration-300 cursor-pointer"
+          style="animation-delay:.2s">
+          Instagram
+        </button>
+
+        <button onclick="openPopup('waPopup')"
+          class="btn-card slide-left relative overflow-hidden w-44 h-12 rounded-2xl font-semibold text-white
+                 bg-white/10 border border-[#25d366]/60 backdrop-blur-md
+                 flex items-center justify-center
+                 hover:bg-[#25d366] hover:scale-105 hover:-translate-y-1 hover:shadow-xl
+                 transition-all duration-300 cursor-pointer"
+          style="animation-delay:.3s">
+          WhatsApp
+        </button>
+
+        <button onclick="openPopup('ghPopup')"
+          class="btn-card slide-left relative overflow-hidden w-44 h-12 rounded-2xl font-semibold text-white
+                 bg-white/10 border border-white/30 backdrop-blur-md
+                 flex items-center justify-center
+                 hover:bg-gray-800 hover:scale-105 hover:-translate-y-1 hover:shadow-xl
+                 transition-all duration-300 cursor-pointer"
+          style="animation-delay:.4s">
+          GitHub
+        </button>
+
+      </div>
+
+      <!-- CENTER PROFILE -->
+      <div class="flex flex-col items-center text-center">
+
+        <div class="pop-in relative inline-block">
+          <div class="avatar-ring"></div>
+          <img src="image/Nahid.png"
+               class="w-48 h-48 rounded-full object-cover object-top border-4 border-white/20 shadow-2xl relative z-10"
+               alt="Nahid Ahmed Nirob"/>
+        </div>
+
+        <h1 class="fade-up mt-6 font-['Playfair_Display'] font-black text-white leading-tight
+                   text-3xl md:text-4xl" style="animation-delay:.4s">
+          Md. <span class="text-[#e63c3c]">Nahid Ahmed</span><br/>Nirob
+        </h1>
+
+        <p class="fade-up mt-3 text-white/60 text-sm tracking-widest uppercase"
+           style="animation-delay:.55s">✦ Passionate Web Developer ✦</p>
+
+        <div class="fade-up flex items-center gap-2 mt-4 text-emerald-400 text-xs font-medium"
+             style="animation-delay:.65s">
+          <span class="status-dot w-2 h-2 rounded-full bg-emerald-400 inline-block"></span>
+          Available for work
+        </div>
+
+      </div>
+
+      <!-- RIGHT BUTTONS -->
+      <div class="flex flex-col gap-4 items-center md:items-end">
+
+        <button onclick="openPopup('liPopup')"
+          class="btn-card slide-right relative overflow-hidden w-44 h-12 rounded-2xl font-semibold text-white
+                 bg-white/10 border border-[#0077b5]/60 backdrop-blur-md
+                 flex items-center justify-center
+                 hover:bg-[#0077b5] hover:scale-105 hover:-translate-y-1 hover:shadow-xl
+                 transition-all duration-300 cursor-pointer"
+          style="animation-delay:.1s">
+          LinkedIn
+        </button>
+
+        <button onclick="openPopup('gmPopup')"
+          class="btn-card slide-right relative overflow-hidden w-44 h-12 rounded-2xl font-semibold text-white
+                 bg-white/10 border border-[#ea4335]/60 backdrop-blur-md
+                 flex items-center justify-center
+                 hover:bg-[#ea4335] hover:scale-105 hover:-translate-y-1 hover:shadow-xl
+                 transition-all duration-300 cursor-pointer"
+          style="animation-delay:.15s">
+          Gmail
+        </button>
+
+        <button onclick="openPopup('aboutPopup')"
+          class="btn-card slide-right relative overflow-hidden w-44 h-12 rounded-2xl font-semibold text-white
+                 bg-white/10 border border-amber-400/60 backdrop-blur-md
+                 flex items-center justify-center
+                 hover:bg-amber-600 hover:scale-105 hover:-translate-y-1 hover:shadow-xl
+                 transition-all duration-300 cursor-pointer"
+          style="animation-delay:.25s">
+          About Me
+        </button>
+
+        <button onclick="openPopup('cvPopup')"
+          class="btn-card slide-right relative overflow-hidden w-44 h-12 rounded-2xl font-semibold text-white
+                 bg-white/10 border border-[#4f8ef7]/60 backdrop-blur-md
+                 flex items-center justify-center
+                 hover:bg-[#4f8ef7] hover:scale-105 hover:-translate-y-1 hover:shadow-xl
+                 transition-all duration-300 cursor-pointer"
+          style="animation-delay:.35s">
+          CV / Resume
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FACEBOOK POPUP -->
+  <div id="fbPopup" class="popup-wrap fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md"
+       onclick="closeOnBg(event,'fbPopup')">
+    <div class="popup-inner bg-gradient-to-br from-[#0f0f23]/98 to-[#1a1a3a]/98
+                border border-white/15 rounded-3xl p-10 max-w-sm w-11/12 text-white relative shadow-2xl">
+      <button onclick="closePopup('fbPopup')"
+              class="absolute top-4 right-5 text-2xl text-white/40 hover:text-white hover:rotate-90 transition-all duration-200 bg-transparent border-none cursor-pointer">&#x2715;</button>
+      <h2 class="font-['Playfair_Display'] text-3xl font-black mb-3">Face<span class="text-[#3b5998]">book</span></h2>
+      <p class="text-white/70 leading-relaxed mb-6">Connect with me on Facebook for updates, projects, and casual conversations.</p>
+      <a href="https://www.facebook.com/nahidahmednirob2529" target="_blank"
+         class="inline-flex items-center gap-2 px-6 py-3 bg-[#3b5998] rounded-xl font-semibold hover:brightness-110 hover:-translate-y-1 transition-all duration-300 text-white no-underline">
+        Visit Facebook →
+      </a>
+    </div>
+  </div>
+
+  <!-- INSTAGRAM POPUP -->
+  <div id="igPopup" class="popup-wrap fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md"
+       onclick="closeOnBg(event,'igPopup')">
+    <div class="popup-inner bg-gradient-to-br from-[#0f0f23]/98 to-[#1a1a3a]/98
+                border border-white/15 rounded-3xl p-10 max-w-sm w-11/12 text-white relative shadow-2xl">
+      <button onclick="closePopup('igPopup')"
+              class="absolute top-4 right-5 text-2xl text-white/40 hover:text-white hover:rotate-90 transition-all duration-200 bg-transparent border-none cursor-pointer">&#x2715;</button>
+      <h2 class="font-['Playfair_Display'] text-3xl font-black mb-3">Insta<span class="text-[#e1306c]">gram</span></h2>
+      <p class="text-white/70 leading-relaxed mb-6">Follow my Instagram for creative shots, behind-the-scenes moments, and design inspiration.</p>
+      <a href="https://www.instagram.com/nahidahmednirob333" target="_blank"
+         class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold hover:brightness-110 hover:-translate-y-1 transition-all duration-300 text-white no-underline"
+         style="background:linear-gradient(135deg,#f58529,#e1306c,#833ab4)">
+        Visit Instagram →
+      </a>
+    </div>
+  </div>
+
+  <!-- WHATSAPP POPUP -->
+  <div id="waPopup" class="popup-wrap fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md"
+       onclick="closeOnBg(event,'waPopup')">
+    <div class="popup-inner bg-gradient-to-br from-[#0f0f23]/98 to-[#1a1a3a]/98
+                border border-white/15 rounded-3xl p-10 max-w-sm w-11/12 text-white relative shadow-2xl">
+      <button onclick="closePopup('waPopup')"
+              class="absolute top-4 right-5 text-2xl text-white/40 hover:text-white hover:rotate-90 transition-all duration-200 bg-transparent border-none cursor-pointer">&#x2715;</button>
+      <h2 class="font-['Playfair_Display'] text-3xl font-black mb-3">Whats<span class="text-[#25d366]">App</span></h2>
+      <p class="text-white/70 leading-relaxed mb-4">Want to chat directly? Reach me on WhatsApp — I typically reply within a few hours.</p>
+      <p class="text-white/40 text-sm mb-6">📞 +880 168 590 9097</p>
+      <a href="https://wa.me/8801685909097" target="_blank"
+         class="inline-flex items-center gap-2 px-6 py-3 bg-[#25d366] rounded-xl font-semibold hover:brightness-110 hover:-translate-y-1 transition-all duration-300 text-white no-underline">
+        Open WhatsApp →
+      </a>
+    </div>
+  </div>
+
+  <!-- GITHUB POPUP -->
+  <div id="ghPopup" class="popup-wrap fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md"
+       onclick="closeOnBg(event,'ghPopup')">
+    <div class="popup-inner bg-gradient-to-br from-[#0f0f23]/98 to-[#1a1a3a]/98
+                border border-white/15 rounded-3xl p-10 max-w-sm w-11/12 text-white relative shadow-2xl">
+      <button onclick="closePopup('ghPopup')"
+              class="absolute top-4 right-5 text-2xl text-white/40 hover:text-white hover:rotate-90 transition-all duration-200 bg-transparent border-none cursor-pointer">&#x2715;</button>
+      <h2 class="font-['Playfair_Display'] text-3xl font-black mb-3">Git<span class="text-gray-400">Hub</span></h2>
+      <p class="text-white/70 leading-relaxed mb-6">Explore my open-source projects, contributions, and code on GitHub.</p>
+      <a href="https://github.com/nahid03nirob" target="_blank"
+         class="inline-flex items-center gap-2 px-6 py-3 bg-gray-800 rounded-xl font-semibold hover:brightness-125 hover:-translate-y-1 transition-all duration-300 text-white no-underline border border-white/10">
+        View GitHub →
+      </a>
+    </div>
+  </div>
+
+<!-- GMAIL POPUP -->
+<div id="gmPopup"
+     class="popup-wrap fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md"
+     onclick="closeOnBg(event,'gmPopup')">
+
+  <div class="popup-inner bg-gradient-to-br from-[#0f0f23]/98 to-[#1a1a3a]/98
+              border border-white/15 rounded-3xl p-10 max-w-sm w-11/12
+              text-white relative shadow-2xl">
+
+    <!-- CLOSE BUTTON -->
+    <button onclick="closePopup('gmPopup')"
+            class="absolute top-4 right-5 text-2xl text-white/40
+                   hover:text-white hover:rotate-90 transition-all
+                   duration-200 bg-transparent border-none cursor-pointer">
+      &#x2715;
+    </button>
+
+    <!-- TITLE -->
+    <h2 class="font-['Playfair_Display'] text-3xl font-black mb-3">
+      Send <span class="text-[#ea4335]">Email</span>
+    </h2>
+
+    <!-- DESCRIPTION -->
+    <p class="text-white/70 leading-relaxed mb-2">
+      Have a project idea or just want to say hello?
+      Drop me an email!
+    </p>
+
+    <!-- EMAIL -->
+    <p class="text-white/40 text-sm mb-6">
+      📧 nahidahmednirob333@gmail.com
+    </p>
+
+    <!-- SEND BUTTON -->
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nahidahmednirob333@gmail.com&su=Portfolio%20Contact&body=Hello%20Nahid,"
+       target="_blank"
+       class="inline-flex items-center gap-2 px-6 py-3 bg-[#ea4335]
+              rounded-xl font-semibold hover:brightness-110
+              hover:-translate-y-1 transition-all duration-300
+              text-white no-underline">
+
+      Send Email →
+    </a>
+
+  </div>
+</div>
+
+  <!-- ABOUT ME POPUP -->
+  <div id="aboutPopup" class="popup-wrap fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md"
+       onclick="closeOnBg(event,'aboutPopup')">
+    <div class="popup-inner bg-gradient-to-br from-[#0f0f23]/98 to-[#1a1a3a]/98
+                border border-white/15 rounded-3xl p-10 max-w-lg w-11/12 text-white relative shadow-2xl">
+      <button onclick="closePopup('aboutPopup')"
+              class="absolute top-4 right-5 text-2xl text-white/40 hover:text-white hover:rotate-90 transition-all duration-200 bg-transparent border-none cursor-pointer">&#x2715;</button>
+      <h2 class="font-['Playfair_Display'] text-3xl font-black mb-4">About <span class="text-amber-400">Me</span></h2>
+      <p class="text-white/75 leading-relaxed mb-3">Hi! I'm <strong class="text-white">Md. Nahid Ahmed Nirob</strong>, a passionate web developer based in Bangladesh. I love turning ideas into beautiful, functional digital experiences.</p>
+      <p class="text-white/75 leading-relaxed mb-5">I specialize in building responsive, modern websites and web applications using the latest technologies. Always learning, always building.</p>
+      <div class="flex flex-wrap gap-2">
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/10 border border-white/20">HTML &amp; CSS</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/10 border border-white/20">JavaScript</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/10 border border-white/20">Tailwind CSS</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/10 border border-white/20">React</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/10 border border-white/20">Node.js</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/10 border border-white/20">Git &amp; GitHub</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/10 border border-white/20">UI/UX Design</span>
+      </div>
+    </div>
+  </div>
+
+<!-- CV Popup -->
+<div id="cvPopup"
+     class="popup-wrap fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md"
+     onclick="closeOnBg(event,'cvPopup')">
+
+  <div class="popup-inner bg-gradient-to-br from-[#0f0f23]/98 to-[#1a1a3a]/98
+              border border-white/15 rounded-3xl p-6 md:p-8 max-w-3xl w-11/12
+              text-white relative shadow-2xl">
+
+    <!-- Close Button -->
+    <button onclick="closePopup('cvPopup')"
+            class="absolute top-4 right-5 text-2xl text-white/40 hover:text-white hover:rotate-90 transition-all duration-200">
+      &#x2715;
+    </button>
+
+    <!-- Heading -->
+    <h2 class="font-['Playfair_Display'] text-3xl font-black mb-3">
+      My <span class="text-[#4f8ef7]">Resume</span>
+    </h2>
+
+    <p class="text-white/70 leading-relaxed mb-6">
+      View or download my latest CV image.
+    </p>
+
+<!-- CV Image -->
+<div class="rounded-2xl overflow-y-auto border border-white/10 shadow-lg mb-6
+            max-h-[80vh] bg-white/5 p-2">
+
+  <img src="./Image/cv.jpg"
+       alt="Nahid Ahmed Nirob CV"
+       class="w-full max-w-[700px] mx-auto h-auto rounded-2xl object-contain">
+</div>
+
+<!-- Download Button -->
+<a href="./Image/cv.jpg"
+   download="Nahid_Ahmed_Nirob_CV.jpg"
+   class="flex items-center justify-center gap-2 w-full py-3 bg-[#4f8ef7]
+          rounded-xl font-semibold hover:brightness-110 hover:-translate-y-1
+          transition-all duration-300 text-white no-underline">
+  ⬇️ Download CV
+</a>
+
+  </div>
+</div>
+
+  <!-- LINKEDIN POPUP -->
+  <div id="liPopup" class="popup-wrap fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md"
+       onclick="closeOnBg(event,'liPopup')">
+    <div class="popup-inner bg-gradient-to-br from-[#0f0f23]/98 to-[#1a1a3a]/98
+                border border-white/15 rounded-3xl p-10 max-w-sm w-11/12 text-white relative shadow-2xl">
+      <button onclick="closePopup('liPopup')"
+              class="absolute top-4 right-5 text-2xl text-white/40 hover:text-white hover:rotate-90 transition-all duration-200 bg-transparent border-none cursor-pointer">&#x2715;</button>
+      <h2 class="font-['Playfair_Display'] text-3xl font-black mb-3">Linked<span class="text-[#0077b5]">In</span></h2>
+      <p class="text-white/70 leading-relaxed mb-6">Connect with me professionally on LinkedIn — let's grow our network and explore opportunities together.</p>
+      <a href="https://www.linkedin.com/in/nahid-ahmed-nirob" target="_blank"
+         class="inline-flex items-center gap-2 px-6 py-3 bg-[#0077b5] rounded-xl font-semibold hover:brightness-110 hover:-translate-y-1 transition-all duration-300 text-white no-underline">
+        Visit LinkedIn →
+      </a>
+    </div>
+  </div>
+
+<script>
+function openPopup(id){ document.getElementById(id).classList.add('open'); }
+function closePopup(id){ document.getElementById(id).classList.remove('open'); }
+function closeOnBg(e,id){ if(e.target===e.currentTarget) closePopup(id); }
+document.addEventListener('keydown', e => {
+  if(e.key==='Escape') {
+    ['fbPopup','igPopup','waPopup','ghPopup','liPopup','gmPopup','aboutPopup','cvPopup']
+      .forEach(id => closePopup(id));
+  }
+});
+</script>
+</body>
+</html>
